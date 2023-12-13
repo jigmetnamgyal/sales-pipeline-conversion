@@ -10,7 +10,7 @@ file_path = "startup_data.csv"
 header = sc.textFile(file_path).first()
 rdd = sc.textFile(file_path).filter(lambda line: line != header).map(lambda line: line.split(';'))
 
-# Define the schema
+# schema
 schema = ["unnamed", "state_code", "latitude", "longitude", "city", "address", "name", "labels",
           "founded_at", "closed_at", "first_funding_at", "last_funding_at", "age_first_funding_year",
           "age_last_funding_year", "age_first_milestone_year", "age_last_milestone_year", "relationships",

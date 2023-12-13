@@ -49,7 +49,6 @@ print(acquired_count)
 total_funding = rdd.map(lambda x: int(x[18])).reduce(lambda x, y: x + y)
 print(f'Total funding of all start up: {total_funding:.2f}$')
 
-
 # calculate the average funding amount for each category.
 category_funding_rdd = rdd.map(lambda row: (row[26], float(row[18])))
 grouped_rdd = category_funding_rdd.groupBy(lambda x: x[0])
