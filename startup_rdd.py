@@ -1,12 +1,5 @@
 from pyspark import SparkContext, SparkConf
 from pyspark.sql import SparkSession
-from datetime import datetime
-
-def convert_to_date(date_str):
-    try:
-        return datetime.strptime(date_str, '%m/%d/%Y').date()
-    except (ValueError, TypeError):
-        return None
 
 conf = SparkConf().setAppName("SparkRDDAnalysis")
 sc = SparkContext(conf=conf)
