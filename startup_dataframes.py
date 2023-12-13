@@ -93,4 +93,25 @@ top_funded_company_per_category_df = category_company_funding_df.groupBy("catego
 
 top_funded_company_per_category_df.show(truncate=False)
 
+# Graphs
+category_list = average_funding_per_category_df.select("category_code").rdd.flatMap(lambda x: x).collect()
+average_funding_list = average_funding_per_category_df.select("average_funding").rdd.flatMap(lambda x: x).collect()
+
+plt.bar(category_list, average_funding_list)
+plt.xlabel("Category Code")
+plt.ylabel("Average Funding (USD)")
+plt.title("Average Funding Amount per Category")
+plt.xticks(rotation=45, ha="right")
+plt.show()
+
+category_list = top_funded_company_per_category_df.select("category_code").rdd.flatMap(lambda x: x).collect()
+max_funding_list = top_funded_company_per_category_df.select("max_funding").rdd.flatMap(lambda x: x).collect()
+
+plt.bar(category_list, max_funding_list)
+plt.xlabel("Category Code")
+plt.ylabel("Top Funding for Company (USD)")
+plt.title("Top-Funded Company per Category")
+plt.xticks(rotation=45, ha="right")
+plt.show()
+
 spark.stop()
